@@ -30,7 +30,7 @@ This guide will help setup your computer to run Java and also explain how to fol
 
 ![Programming in Java](/img/programming.png)
 
-7. Once you have completed a lesson, you can click on the `Source Control Icon` which has three circles connected by two lines. `Write a message`` stating you completed the lesson then click the green button that says `Commit`. A dialog should appear where you click on the `Green Button`. Now that this is done, we can go to the next lesson!
+7. Once you have completed a lesson, you can click on the `Source Control Icon` which has three circles connected by two lines. `Write a message` stating you completed the lesson then click the green button that says `Commit`. A dialog should appear where you click on the `Green Button`. Now that this is done, we can go to the next lesson!
 
 ![Committing Changes](/img/commiting.gif)
 
