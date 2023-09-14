@@ -34,7 +34,9 @@ This guide will help setup your computer to run Java and also explain how to fol
 
 ![Committing Changes](/img/commiting.gif)
 
-8. To go to the next lesson, click on `Java-0` on the bottom left. Then select the next lesson called `Java-1`. The bottom left should change to `Java-1` and the files should change to indicate you are on a new lesson.
+8. To go to the next lesson, click on the `Source Control Icon` and then click on the `Three Dots`. Click `Checkout to...` then select `Java-1`. This should bring you to lesson 1. To verify that your lesson is most up to date click on the `Three Dots` again then click `Pull`.
+
+![New Lesson](/img/new_lesson.gif)
 
 ## Java: Zero to Hero
 
