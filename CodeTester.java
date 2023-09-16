@@ -9,6 +9,7 @@ public class CodeTester {
         System.out.println("\033[1;34m----------------------------------------\033[0m");
         System.out.println("\033[1;34mRunning tests...\033[0m"); 
         System.out.println("\033[1;34m----------------------------------------\033[0m");
+        
         tester.problem1();
         tester.problem2();
     }

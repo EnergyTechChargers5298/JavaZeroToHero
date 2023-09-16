@@ -1,0 +1,59 @@
+# Java Basics
+
+Computers are able to do fantastic and complex things like stream videos worldwide, run video games, render complex models, and more. However, what many don't know is that computers are dumb and only can execute simple instructions like add two numbers together. Programmers are able to utilize simple instructions and put them together to built complex ***programs*** which are a set of instructions that can do virtually anything!
+
+![Programming Languages](/img/languages.jpg)
+
+There are many programming languages out there each with their own strengths and weaknesses and there are always new programming languages being created. For this course, we will focus on ***Java*** which is a popular programming language which can be used to code FIRST Robotics Robots. One important thing to note is that every programming language is written differently however the concepts stay mostly the same which means once you learn one programming language, the next one gets much easier to learn!
+
+## Structure
+
+Every Java file ends with a `.java` to denote it was written in Java. An example of a java file is `Playground.java` which is in this folder. Let's take a deeper look at this file.
+
+```java
+public class Playground {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+    }
+}
+```
+
+Every Java file we will create starts with `public class <FileName>`. For this case, the file starts with... 
+
+```java 
+public class Playground
+```
+
+because our file name is `Playground.java`. If our file name was `Robots.java`, then our file would start with...
+
+```java
+public class Robots
+```
+
+After the class statement, there are `{}` which we call curly braces. Every code we write are inside the curly brace which states to the computer that it is part of the file. If you write code outside the curly brace, it will give you an error (The computer will basically be mad at you).
+
+### Main Method
+
+After the class, we see the statement...
+
+```java
+public static void main(String[] args) {
+
+}
+```
+
+For Java, treat this like an encantation because the only code that the computer actually runs is the code that is inside these curly braces. This part of the file is always written the same way.
+
+### Statements
+
+Now that we have done the grunt work to setup our Java file, we can write code! There is already a line inside the curly braces of the main method...
+
+```java
+System.out.println("Hello World");
+```
+
+This line will print `Hello World` to the ***terminal*** which is a place where our code can output information.
+
+We call lines of code like this a ***statement*** which are similar to sentences. Each statement is one instruction we ask our computer to do. One important thing to note is that in English we end each sentence with a period ( **.** ). In Java, we end every statement with a ( **;** ).
+
+## Printing
