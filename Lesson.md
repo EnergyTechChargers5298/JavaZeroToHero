@@ -56,4 +56,36 @@ This line will print `Hello World` to the ***terminal*** which is a place where 
 
 We call lines of code like this a ***statement*** which are similar to sentences. Each statement is one instruction we ask our computer to do. One important thing to note is that in English we end each sentence with a period ( **.** ). In Java, we end every statement with a ( **;** ).
 
-## Printing
+### Printing
+
+Printing displays statements in the console. In the examples in this section, it is the `Hello World` sent to the **terminal** from the `System.out.println("Hello World")`.
+
+A **terminal** (this may also be referred to as a **console**) serves as a place for the user to enter and recieve data. Note that it only starts working after "run" is clicked. This would also be the place error codes would appear (this includes but is not limited to: missing `;`, misspelt statements, and stray `{}` or `()`)
+
+There are two ways of writing print statements, and each one will change the way they are displayed in the **terminal**...
+
+```java
+System.out.println("Hello World");
+System.out.print("Hello World");
+```
+
+This code will produce a terminal output that looks like...
+
+```
+Hello World
+Hello World
+```  
+
+While they might appear the same, the difference becomes clearer when you write the `print` before the `println` statement:
+
+```java
+System.out.print("Hello World");
+System.out.println("Hello World");
+
+```
+
+```
+Hello worldHello world
+```
+
+This is because `println` creates a **line break** (think when you hit 'enter' on a keyboard) while `print` does not.
