@@ -6,6 +6,9 @@ import java.io.PrintStream;
 import org.junit.Test;
 
 import pset.Problem_1;
+import pset.Problem_2;
+import pset.Problem_3;
+import pset.Problem_4;
 
 public class CodeTester {
 
@@ -49,6 +52,26 @@ public class CodeTester {
         }
     }
 
+    private void consoleMatch(String expected, Runnable runnable) {
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        PrintStream newOut = new PrintStream(outStream);
+        PrintStream oldOut = System.out;
+
+        try {
+            System.setOut(newOut);
+            runnable.run();
+            System.out.flush();
+            System.setOut(oldOut);
+
+            assertEquals(expected.trim(), outStream.toString().trim());
+            RESULT.success();
+        } catch (AssertionError e) {
+            RESULT.mismatch(expected, outStream.toString());
+        } catch (Exception e) {
+            RESULT.error(e);
+        }
+    }
+
     public static void main(String[] args) {
         CodeTester tester = new CodeTester();
 
@@ -62,26 +85,7 @@ public class CodeTester {
         tester.Problem_4();
     }
 
-    private void consoleMatch(String expected) {
-        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        PrintStream newOut = new PrintStream(outStream);
-        PrintStream oldOut = System.out;
-
-        try {
-            System.setOut(newOut);
-            String[] args = {};
-            Problem_1.main(args);
-            System.out.flush();
-            System.setOut(oldOut);
-
-            assertEquals(expected.trim(), outStream.toString().trim());
-            RESULT.success();
-        } catch (AssertionError e) {
-            RESULT.mismatch(expected, outStream.toString());
-        } catch (Exception e) {
-            RESULT.error(e);
-        }
-    }
+    public static String args[] = {};
 
     @Test
     public void Problem_1() {
@@ -94,7 +98,7 @@ public class CodeTester {
         expected.append(System.lineSeparator());
         expected.append("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
 
-        consoleMatch(expected.toString());
+        consoleMatch(expected.toString(), () -> Problem_1.main(args));
     }
 
     @Test
@@ -114,7 +118,7 @@ public class CodeTester {
         expected.append(System.lineSeparator());
         expected.append("  /\\");
         
-        consoleMatch(expected.toString());
+        consoleMatch(expected.toString(), () -> Problem_2.main(args));
     }
 
     @Test
@@ -139,7 +143,7 @@ public class CodeTester {
         expected.append(System.lineSeparator());
         expected.append("(But we type \\\" instead!)");
         
-        consoleMatch(expected.toString());
+        consoleMatch(expected.toString(), () -> Problem_3.main(args));
     }
 
     @Test
@@ -157,6 +161,6 @@ public class CodeTester {
         expected.append(System.lineSeparator());
         expected.append("}");
         
-        consoleMatch(expected.toString());
+        consoleMatch(expected.toString(), () -> Problem_4.main(args));
     }
 }
