@@ -2,7 +2,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.concurrent.Callable;
 
 import org.junit.Test;
 
@@ -57,7 +56,10 @@ public class CodeTester {
         System.out.println("\033[1;34mRunning tests...\033[0m"); 
         System.out.println("\033[1;34m----------------------------------------\033[0m");
 
-        tester.problem1();
+        tester.Problem_1();
+        tester.Problem_2();
+        tester.Problem_3();
+        tester.Problem_4();
     }
 
     private void consoleMatch(String expected) {
@@ -82,7 +84,7 @@ public class CodeTester {
     }
 
     @Test
-    public void problem1() {
+    public void Problem_1() {
         System.out.print("\033[1;37mProblem 1 Results..........\033[0m");
 
         StringBuilder expected = new StringBuilder();
@@ -92,6 +94,69 @@ public class CodeTester {
         expected.append(System.lineSeparator());
         expected.append("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
 
+        consoleMatch(expected.toString());
+    }
+
+    @Test
+    public void Problem_2() {
+        System.out.print("\033[1;37mProblem 2 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("  \\/");
+        expected.append(System.lineSeparator());
+        expected.append(" \\\\//");
+        expected.append(System.lineSeparator());
+        expected.append("\\\\\\///");
+        expected.append(System.lineSeparator());
+        expected.append("///\\\\\\");
+        expected.append(System.lineSeparator());
+        expected.append(" //\\\\");
+        expected.append(System.lineSeparator());
+        expected.append("  /\\");
+        
+        consoleMatch(expected.toString());
+    }
+
+    @Test
+    public void Problem_3() {
+        System.out.print("\033[1;37mProblem 3 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("A well-formed Java program has");
+        expected.append(System.lineSeparator());
+        expected.append("a main method with { and }");
+        expected.append(System.lineSeparator());
+        expected.append("braces.");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("A System.out.println statement");
+        expected.append(System.lineSeparator());
+        expected.append("has ( and ) and usually a");
+        expected.append(System.lineSeparator());
+        expected.append("String that starts and ends");
+        expected.append(System.lineSeparator());
+        expected.append("with a \" character.");
+        expected.append(System.lineSeparator());
+        expected.append("(But we type \\\" instead!)");
+        
+        consoleMatch(expected.toString());
+    }
+
+    @Test
+    public void Problem_4() {
+        System.out.print("\033[1;37mProblem 4 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("public class Hello {");
+        expected.append(System.lineSeparator());
+        expected.append("\tpublic static void main(String[] args) {");
+        expected.append(System.lineSeparator());
+        expected.append("\t\tSystem.out.println(\"Hello, world!\");");
+        expected.append(System.lineSeparator());
+        expected.append("\t}");
+        expected.append(System.lineSeparator());
+        expected.append("}");
+        
         consoleMatch(expected.toString());
     }
 }
