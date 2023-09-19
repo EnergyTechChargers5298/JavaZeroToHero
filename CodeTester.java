@@ -1,7 +1,9 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Method;
 
 import org.junit.Test;
 
@@ -9,6 +11,11 @@ import pset.Problem_1;
 import pset.Problem_2;
 import pset.Problem_3;
 import pset.Problem_4;
+import pset.Problem_5;
+import pset.Problem_6;
+import pset.Problem_7;
+import pset.Problem_8;
+import pset.Problem_9;
 
 public class CodeTester {
 
@@ -42,6 +49,21 @@ public class CodeTester {
             System.out.println();
         }
 
+        public static void condensedMismatch() {
+            System.out.println(RESULT.FAILED);
+            System.out.println("The program did not produce the expected output.");
+            System.out.println();
+        }
+
+        public static void atleast(int expected, int actual) {
+            System.out.println(RESULT.FAILED);
+            System.out.println("The program does not have enough methods.");
+            System.out.println();
+            System.out.println("\033[1;37mExpected minimum:\033[0m " + expected);
+            System.out.println("\033[1;37mActual amount:\033[0m " + actual);
+            System.out.println();
+        }
+
         public static void error(Exception e) {
             System.out.println(RESULT.FAILED);
             System.out.println("The program did not run successfully.");
@@ -72,6 +94,37 @@ public class CodeTester {
         }
     }
 
+    private void consoleMatchCondensed(String expected, Runnable runnable) {
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        PrintStream newOut = new PrintStream(outStream);
+        PrintStream oldOut = System.out;
+
+        try {
+            System.setOut(newOut);
+            runnable.run();
+            System.out.flush();
+            System.setOut(oldOut);
+            
+            assertEquals(expected.trim(), outStream.toString().trim());
+            RESULT.success();
+        } catch (AssertionError e) {
+            RESULT.condensedMismatch();
+        } catch (Exception e) {
+            RESULT.error(e);
+        }
+    }
+
+    private void atLeastNum(int expected, int actual) {
+        try {
+            assertTrue(actual >= expected);
+            RESULT.success();
+        } catch (AssertionError e) {
+            RESULT.atleast(expected, actual);
+        } catch (Exception e) {
+            RESULT.error(e);
+        }
+    }
+
     public static void main(String[] args) {
         CodeTester tester = new CodeTester();
 
@@ -83,6 +136,15 @@ public class CodeTester {
         tester.Problem_2();
         tester.Problem_3();
         tester.Problem_4();
+        tester.Problem_5();
+        tester.Problem_5_2();
+        tester.Problem_6();
+        tester.Problem_6_2();
+        tester.Problem_7();
+        tester.Problem_7_2();
+        tester.Problem_8();
+        tester.Problem_8_2();
+        tester.Problem_9();
     }
 
     public static String args[] = {};
@@ -162,5 +224,206 @@ public class CodeTester {
         expected.append("}");
         
         consoleMatch(expected.toString(), () -> Problem_4.main(args));
+    }
+
+    @Test
+    public void Problem_5() {
+        System.out.print("\033[1;37mProblem 5 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("There's one thing every coder must understand:");
+        expected.append(System.lineSeparator());
+        expected.append("The System.out.println command.");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("There's one thing every coder must understand:");
+        expected.append(System.lineSeparator());
+        expected.append("The System.out.println command.");
+
+        
+        consoleMatch(expected.toString(), () -> Problem_5.main(args));
+    }
+
+    @Test
+    public void Problem_5_2() {
+        System.out.print("\033[1;37mProblem 5 Chant............\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("There's one thing every coder must understand:");
+        expected.append(System.lineSeparator());
+        expected.append("The System.out.println command.");
+        
+        consoleMatch(expected.toString(), () -> Problem_5.chant());
+    }
+
+    @Test
+    public void Problem_6() {
+        System.out.print("\033[1;37mProblem 6 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("Go, team, go!");
+        expected.append(System.lineSeparator());
+        expected.append("You can do it.");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("Go, team, go!");
+        expected.append(System.lineSeparator());
+        expected.append("You can do it.");
+        expected.append(System.lineSeparator());
+        expected.append("You're the best,");
+        expected.append(System.lineSeparator());
+        expected.append("In the West.");
+        expected.append(System.lineSeparator());
+        expected.append("Go, team, go!");
+        expected.append(System.lineSeparator());
+        expected.append("You can do it.");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("Go, team, go!");
+        expected.append(System.lineSeparator());
+        expected.append("You can do it.");
+        expected.append(System.lineSeparator());
+        expected.append("You're the best,");
+        expected.append(System.lineSeparator());
+        expected.append("In the West.");
+        expected.append(System.lineSeparator());
+        expected.append("Go, team, go!");
+        expected.append(System.lineSeparator());
+        expected.append("You can do it.");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("Go, team, go!");
+        expected.append(System.lineSeparator());
+        expected.append("You can do it.");
+        
+        consoleMatch(expected.toString(), () -> Problem_6.main(args));
+    }
+
+    @Test
+    public void Problem_6_2() {
+        System.out.print("\033[1;37mProblem 6 Methods..........\033[0m");
+        Method[] methods = Problem_6.class.getDeclaredMethods();
+        atLeastNum(3, methods.length);
+    }
+
+    @Test
+    public void Problem_7() {
+        System.out.print("\033[1;37mProblem 7 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("   ______");
+        expected.append(System.lineSeparator());
+        expected.append("  /      \\");
+        expected.append(System.lineSeparator());
+        expected.append(" /        \\");
+        expected.append(System.lineSeparator());
+        expected.append(" \\        /");
+        expected.append(System.lineSeparator());
+        expected.append("  \\______/");
+        expected.append(System.lineSeparator());
+        expected.append("    ______");
+        expected.append(System.lineSeparator());
+        expected.append("   /      \\");
+        expected.append(System.lineSeparator());
+        expected.append("  /        \\");
+        expected.append(System.lineSeparator());
+        expected.append("  \\        /");
+        expected.append(System.lineSeparator());
+        expected.append("   \\______/");
+        expected.append(System.lineSeparator());
+        expected.append(" +--------+");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("   ______");
+        expected.append(System.lineSeparator());
+        expected.append("  /      \\");
+        expected.append(System.lineSeparator());
+        expected.append(" /        \\");
+        expected.append(System.lineSeparator());
+        expected.append(" |  STOP  |");
+        expected.append(System.lineSeparator());
+        expected.append(" \\        /");
+        expected.append(System.lineSeparator());
+        expected.append("  \\______/");
+        expected.append(System.lineSeparator());
+        expected.append(" +--------+");
+
+        consoleMatch(expected.toString(), () -> Problem_7.main(args));
+    }
+
+    @Test
+    public void Problem_7_2() {
+        System.out.print("\033[1;37mProblem 7 Methods..........\033[0m");
+        Method[] methods = Problem_7.class.getDeclaredMethods();
+        atLeastNum(3, methods.length);
+    }
+
+    @Test
+    public void Problem_8() {
+        System.out.print("\033[1;37mProblem 8 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append(" * * ");
+        expected.append(System.lineSeparator());
+        expected.append("  *  ");
+        expected.append(System.lineSeparator());
+        expected.append(" * * ");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append(" * * ");
+        expected.append(System.lineSeparator());
+        expected.append("  *  ");
+        expected.append(System.lineSeparator());
+        expected.append(" * * ");
+        expected.append(System.lineSeparator());
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append(System.lineSeparator());
+        expected.append("  *  ");
+        expected.append(System.lineSeparator());
+        expected.append("  *  ");
+        expected.append(System.lineSeparator());
+        expected.append("  *  ");
+        expected.append(System.lineSeparator());
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append("*****");
+        expected.append(System.lineSeparator());
+        expected.append(" * * ");
+        expected.append(System.lineSeparator());
+        expected.append("  *  ");
+        expected.append(System.lineSeparator());
+        expected.append(" * * ");
+        
+        consoleMatch(expected.toString(), () -> Problem_8.main(args));
+    }
+
+    @Test
+    public void Problem_8_2() {
+        System.out.print("\033[1;37mProblem 8 Methods..........\033[0m");
+        Method[] methods = Problem_8.class.getDeclaredMethods();
+        atLeastNum(3, methods.length);
+    }
+
+    @Test
+    public void Problem_9() {
+        System.out.print("\033[1;37mProblem 9 Results..........\033[0m");
+
+        StringBuilder expected = new StringBuilder();
+        for(int i = 0; i < 1000; i++) {
+            expected.append("All work and no play makes Jack a dull boy.");
+        }
+
+        consoleMatchCondensed(expected.toString(), () -> Problem_9.main(args));
     }
 }
