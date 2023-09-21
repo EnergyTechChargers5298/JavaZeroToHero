@@ -92,16 +92,14 @@ This is because `println` creates a **line break** (think when you hit 'enter' o
 
 ### Escape Sequences
 
-We can use what we call **escape sequences** in our statements to make them easier to read. 
-
 Say we wanted to write `"Hello World"` in our terminal. With what we've seen, `System.out.println("Hello World")` only prints `Hello World` without the quotation marks. However, just writing `System.out.println(""Hello World"")` will produce an error, since the statement no longer has the correct **syntax** (any messages within a `System.out.println` have to follow a certain format). There are other **special characters** that will produce the same effect: `'` and `/`.
 
-In order to fix this, we must use escape sequences in order to tell the computer to treat the special character like part of the print message...
+In order to fix this, we must use **escape sequences** in order to tell the computer to treat the special character like part of the print message...
 
 ```java
 System.out.println("\"Hello World\"");
 ```
-Notice how it gets written as `\"`. The backslash gets placed before the character you want to appear.
+Notice how it gets written as `\"`. The backslash gets placed before the special character you want to appear.
 
 It's the same way if you want to use a `\` or `'`in your terminal output as well. 
 
