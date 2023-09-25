@@ -152,6 +152,84 @@ System.out.println("Hello World\tHello World");
 Hello World    Hello World
 ```
 
+
+### Methods (with no parameters)
+
+//intro?
+
+Setting up a **method** is similar to setting up your **Main Method** (where we've been writing our "Hello World" print statements.
+These new methods will be **nested** inside of our main class but outside of our main method (this can and will change in later lessons).
+
+The syntax for creating a new method with no parameters is as follows:
+
+```java
+public static void newMethod() {
+
+}
+```
+
+There are a couple of things to note with this setup:
+
+`public` allows for the method to be run anywhere in our code. This isn't entirely relevant at the moment but make sure that you remember that it *can and will* change in future lessons.
+
+`static` simply denotes the method is a part of the class (in this example, it's our main class). This will be important later when we start implementing **objects**.
+
+`void` indicates our **return** type. Void is the only type that does not return a value after running the method.
+
+`newMethod()` is the name of the method: this can change if you want to better describe what your method does. Notice how there is an empty set of parenthasis: this is telling the computer *"because there are no parameters in our method, it does not need any extra information to run"*. Pay attention to the capitalization in the method names: they should always be in camelCase!
+
+Let's use this in another example. Say we want to print `Hello world` three times, have a blank row, then print another three lines of `Hello world`. Writing it all out would give us a very hefty block of code:
+
+```java
+System.out.println("Hello World");
+System.out.println("Hello World");
+System.out.println("Hello World");
+System.out.println();
+System.out.println("Hello World");
+System.out.println("Hello World");
+System.out.println("Hello World");
+```
+
+We can approach this by writing a `helloWorld()` method that prints it three times *for* us:
+
+```java
+public static void helloWorld() {
+    System.out.println("Hello World");
+    System.out.println("Hello World");
+    System.out.println("Hello World");
+}
+```
+Note here how the `helloWorld()` replaced our `newMethod()` from the first example. This is just to show that it's interchangeable.
+
+After writing our `helloWorld()` method, we can *call* it into our main method. This will run the method once, printing `Hello World` three times (as **defined** in our method):
+
+```java
+public static void main(String[] args) {
+    helloWorld();
+}
+```
+*Notice how there is a `;` after our statement, just like our regular `System.out.println()`.*
+
+Putting this all together in the main class, we get:
+
+```java
+class Main {
+  public static void main(String[] args) {
+    helloWorld();
+    System.out.println();
+    helloWorld();
+  }
+
+  public static void helloWorld(){
+    System.out.println("Hello World");
+    System.out.println("Hello World");
+    System.out.println("Hello World");
+  }
+
+}
+```
+
+
 <ins> Quick Reference </ins>
 
 Adding special characters to a statement: 
@@ -177,4 +255,12 @@ System.out.println("\tHello World\tHello World");
 Hello World
 Hello World
     Hello World    Hello World
+```
+
+Creating a method with no parameters or return:
+
+```java
+public static void newMethod() {
+//code goes here;
+}
 ```
