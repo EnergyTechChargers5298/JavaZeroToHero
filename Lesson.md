@@ -1,266 +1,251 @@
-# Java Basics
+# Introduction to Java
 
-Computers are able to do fantastic and complex things like stream videos worldwide, run video games, render complex models, and more. However, what many don't know is that computers are dumb and only can execute simple instructions like add two numbers together. Programmers are able to utilize simple instructions and put them together to built complex ***programs*** which are a set of instructions that can do virtually anything!
+As programmers our goal is to solve complex problems through code. We build a **program** which is a sequence of instructions that specifies how to perform a
+computation on computer hardware. The computation might be something
+mathematical, like solving a system of equations or finding the roots of a poly-
+nomial. It could also be a symbolic computation, like searching and replacing
+text in a document or (strangely enough) compiling a program.
 
-![Programming Languages](/img/languages.jpg)
+The details look different in different languages, but a few basic instructions
+appear in just about every language:
 
-There are many programming languages out there each with their own strengths and weaknesses and there are always new programming languages being created. For this course, we will focus on ***Java*** which is a popular programming language which can be used to code FIRST Robotics Robots. One important thing to note is that every programming language is written differently however the concepts stay mostly the same which means once you learn one programming language, the next one gets much easier to learn!
+1. **input:** Get data from the keyboard, a file, a sensor, or some other device.
+2. **output:** Display data on the screen, or send data to a file or other device.
+3. **math:** Perform basic mathematical operations like addition and division.
+4. **decision:** Check for certain conditions and execute the appropriate code.
+5. **repetition:** Perform an action repeatedly, usually with some variation.
 
-## Structure
+Believe it or not, that’s pretty much all there is to it. Every program you’ve
+ever used, no matter how complicated, is made up of small instructions that
+look much like these. So you can think of programming as the process of
+breaking down a large, complex task into smaller and smaller subtasks. The
+process continues until the subtasks are simple enough to be performed with
+the electronic circuits provided by the hardware.
 
-Every Java file ends with a `.java` to denote it was written in Java. An example of a java file is `Playground.java` which is in this folder. Let's take a deeper look at this file.
+## Our First Program
+
+Traditionally, the first program you write when learning a new programming
+language is called the “Hello World” program. All it does is output the words
+`Hello, World!` to the screen. In Java, it looks like this:
 
 ```java
-public class Playground {
+public class Hello {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // generate some simple output
+        System.out.println("Hello, World!");
     }
 }
 ```
 
-Every Java file we will create starts with `public class <FileName>`. For this case, the file starts with... 
+When this program runs, it displays the following:
 
-```java 
-public class Playground
+```
+Hello, World!
 ```
 
-because our file name is `Playground.java`. If our file name was `Robots.java`, then our file would start with...
+Java programs are made up of *class* and *method* definitions, and methods are
+made up of *statements*. A *statement* is a line of code that performs a basic action. In the Hello World program, this line is a *print* statement that displays a message to the user:
 
 ```java
-public class Robots
+System.out.println("Hello, World!");
 ```
 
-After the class statement, there are `{}` which we call curly braces. Every code we write are inside the curly brace which states to the computer that it is part of the file. If you write code outside the curly brace, it will give you an error (The computer will basically be mad at you).
+`System.out.println` displays results on the screen; the name `println` stands
+for “print line”. Confusingly, *print* can mean both “display on the screen” and
+“send to the printer”. In Java, we’ll try to say “display” when we mean
+output to the screen. Like most statements, the print statement ends with a
+semicolon (;).
 
-### Main Method
+Java is “case-sensitive”, which means that uppercase and lowercase are not the
+same. In the Hello World program, `System` has to begin with an uppercase
+letter; `system` and `SYSTEM` won’t work.
 
-After the class, we see the statement...
+A **method** is a named sequence of statements. This program defines one
+method named `main`:
 
 ```java
-public static void main(String[] args) {
+public static void main(String[] args)
+```
 
+The name and format of `main` is special: when the program runs, it starts at
+the first statement in `main` and ends when it finishes the last statement. Later,
+you will see programs that define more than one method.
+
+This program defines a class named `Hello`. For now, a **class** is a collection
+of methods; we’ll have more to say about this later. You can give a class any
+name you like, but it is conventional to start with a capital letter. The name
+of the class has to match the name of the file it is in, so this class has to be in
+a file named *Hello.java*.
+
+Java uses curly braces (`{` and `}`) to group things together. In *Hello.java*, the
+outermost braces contain the class definition, and the inner braces contain the
+method definition.
+
+The line that begins with two slashes (`//`) is a **comment**, which is a bit of
+English text that explains the code. When Java sees `//`, it ignores everything
+from there until the end of the line. Comments have no effect on the execution
+of the program, but they make it easier for other programmers (and your future
+self) to understand what you meant to do.
+
+## Displaying Multiple Messages
+
+You can put as many statements as you like in the `main` method. For example,
+to display more than one line of output:
+
+```java
+public class Hello2 {
+    public static void main(String[] args) {
+        // generate some simple output
+        System.out.println("Hello, World!"); // first line
+        System.out.println("How are you?"); // another line
+    }
 }
 ```
 
-For Java, treat this like an incantation because the only code that the computer actually runs is the code inside these curly braces. This part of the file is always written the same way.
+As this example also shows, you can put comments at the end of a line as well
+as on lines all by themselves.
 
-### Statements
+Phrases that appear in quotation marks are called **strings**, because they con-
+tain a sequence of characters strung together in memory. Characters can be
+letters, numbers, punctuation marks, symbols, spaces, tabs, etc.
 
-Now that we have done the grunt work to setup our Java file, we can write code! There is already a line inside the curly braces of the main method...
-
-```java
-System.out.println("Hello World");
-```
-
-This line will print `Hello World` to the ***terminal*** which is a place where our code can output information.
-
-We call lines of code like this a ***statement***, which are similar to sentences. Each statement is one instruction we ask our computer to do. One important thing to note is that in English we end each sentence with a period ( **.** ). In Java, we end every statement with a ( **;** ).
-
-### Printing
-
-Printing displays statements in the terminal. In the examples in this section, it is the `Hello World` sent to the **terminal** from the `System.out.println("Hello World")`.
-
-A **terminal** (this may also be referred to as a **console**) serves as a place for the user to enter and recieve data. Note that it only starts working after "run" is clicked. This would also be the place error codes would appear (this includes but is not limited to: missing `;`, misspelt statements, and stray `{}` or `()`).
-
-There are two ways of writing print statements, and each one will change the way they are displayed in the **terminal**...
+`System.out.println` appends a special character, called a **newline**, that
+moves to the beginning of the next line. If you don’t want a newline at the
+end, you can use `print` instead of `println`:
 
 ```java
-System.out.println("Hello World");
-System.out.print("Hello World");
-```
-
-This code will produce a terminal output that looks like...
-
-```
-Hello World
-Hello World
-```  
-
-While they might appear the same, the difference becomes clearer when you write the `print` before the `println` statement:
-
-```java
-System.out.print("Hello World");
-System.out.println("Hello World");
-
-```
-
-```
-Hello worldHello world
-```
-
-This is because `println` creates a **line break** (think when you hit 'enter' on a keyboard) while `print` does not.
-
-### Escape Sequences
-
-Say we wanted to write `"Hello World"` in our terminal. With what we've seen, `System.out.println("Hello World")` only prints `Hello World` without the quotation marks. However, just writing `System.out.println(""Hello World"")` will produce an error, since the statement no longer has the correct **syntax** (any messages within a `System.out.println` have to follow a certain format). There are other **special characters** that will produce the same effect: `'` and `/`.
-
-In order to fix this, we must use **escape sequences** in order to tell the computer to treat the special character like part of the print message...
-
-```java
-System.out.println("\"Hello World\"");
-```
-Notice how it gets written as `\"`. The backslash gets placed before the special character you want to appear.
-
-It's the same way if you want to use a `\` or `'`in your terminal output as well. 
-
-```java
-System.out.println("\\Hello World\\");
-System.out.println("/'Hello World/'");
-```
-These statements may look like they will print `\\Hello World\\` and `/'Hello World/'` respectively, but they actually produce `\Hello World\` and `'Hello World'`, since the first `\` is telling the computer to treat the special character immediately following as normal text.
-
-Now that we've covered ways of getting special characters into a normal statement, there are also ways of modifying the statements to easily format them. Say we wanted to achieve the following with one line of code:
-
-```
-Hello World
-Hello World
-```
-
-To achieve this, we *could* write...
-
-```java
-System.out.println("Hello World");
-System.out.println("Hello World");
-```
-
-Or, we could introduce `\n` to be able to write the two `Hello World`s in one statement...
-
-```java
-System.out.println("Hello World\nHello World");
-```
-
-Notice how it's a regular text character, but with the `\`, it becomes a special formatting character. Everything around the `\n` is still used in the terminal output. Look closely at the following formatting of the `println` statement, and how its respective console output behaves because of the extra spaces.
-
-```java
-System.out.println("Hello World \n Hello World");
-```
-
-```
-Hello World 
- Hello World
-```
-
-Say we wanted to now write the two `Hello World`s in same line, but to have a gap in between them. We could achieve this by using spaces, but this makes it hard to be consistent. (*Did I use 5 or 6 spaces?*)
-
-Instead, we insert a tab with `\t`. This behaves similarly to `\n`, where it is affected by spaces. For reference, tabs are equivalent to 4 spaces.
-
-```java
-System.out.println("Hello World\tHello World");
-```
-
-```
-Hello World    Hello World
-```
-
-
-### Methods (with no parameters)
-
-//intro?
-
-Setting up a **method** is similar to setting up your **Main Method** (where we've been writing our "Hello World" print statements.
-These new methods will be **nested** inside of our main class but outside of our main method (this can and will change in later lessons).
-
-The syntax for creating a new method with no parameters is as follows:
-
-```java
-public static void newMethod() {
-
+public class Goodbye {
+    public static void main(String[] args) {
+        System.out.print("Goodbye, ");
+        System.out.println("cruel world");
+    }
 }
 ```
 
-There are a couple of things to note with this setup:
+In this example, the first statement does not add a newline, so the output appears on a single line:
 
-`public` allows for the method to be run anywhere in our code. This isn't entirely relevant at the moment but make sure that you remember that it *can and will* change in future lessons.
-
-`static` simply denotes the method is a part of the class (in this example, it's our main class). This will be important later when we start implementing **objects**.
-
-`void` indicates our **return** type. Void is the only type that does not return a value after running the method.
-
-`newMethod()` is the name of the method: this can change if you want to better describe what your method does. Notice how there is an empty set of parenthasis: this is telling the computer *"because there are no parameters in our method, it does not need any extra information to run"*. Pay attention to the capitalization in the method names: they should always be in camelCase!
-
-Let's use this in another example. Say we want to print `Hello world` three times, have a blank row, then print another three lines of `Hello world`. Writing it all out would give us a very hefty block of code:
-
-```java
-System.out.println("Hello World");
-System.out.println("Hello World");
-System.out.println("Hello World");
-System.out.println();
-System.out.println("Hello World");
-System.out.println("Hello World");
-System.out.println("Hello World");
+```
+Goodbye, cruel world
 ```
 
-We can approach this by writing a `helloWorld()` method that prints it three times *for* us:
+Notice that there is a space at the end of the first string, which appears in the
+output just before the word `cruel`.
+
+## Using Escape Sequences
+
+It’s possible to display multiple lines of output with only one line of code. You
+just have to tell Java where to put the line breaks:
 
 ```java
-public static void helloWorld() {
-    System.out.println("Hello World");
-    System.out.println("Hello World");
-    System.out.println("Hello World");
-}
-```
-Note here how the `helloWorld()` replaced our `newMethod()` from the first example. This is just to show that it's interchangeable.
-
-After writing our `helloWorld()` method, we can *call* it into our main method. This will run the method once, printing `Hello World` three times (as **defined** in our method):
-
-```java
-public static void main(String[] args) {
-    helloWorld();
-}
-```
-*Notice how there is a `;` after our statement, just like our regular `System.out.println()`.*
-
-Putting this all together in the main class, we get:
-
-```java
-class Main {
-  public static void main(String[] args) {
-    helloWorld();
-    System.out.println();
-    helloWorld();
-  }
-
-  public static void helloWorld(){
-    System.out.println("Hello World");
-    System.out.println("Hello World");
-    System.out.println("Hello World");
-  }
-
+public class Hello3 {
+    public static void main(String[] args) {
+        System.out.print("Hello!\nHow are you doing?\n");
+    }
 }
 ```
 
-
-<ins> Quick Reference </ins>
-
-Adding special characters to a statement: 
-```java
-System.out.println("\"Hello World\"");
-System.out.println("\'Hello World\'");
-System.out.println("\\Hello World\\");
-```
+The output is two lines, each ending with a newline character:
 
 ```
-"Hello World"
-'Hello World'
-\Hello World\
-```
-Adding formatting to a statement:
-
-```java
-System.out.println("Hello World\nHello World");
-System.out.println("\tHello World\tHello World");
+Hello!
+How are you doing?
 ```
 
-```
-Hello World
-Hello World
-    Hello World    Hello World
-```
+Each `\n` is an **escape sequence**, or two characters of source code that represent a single character. (The backslash allows you to *escape* the string to
+write special characters.) Notice there is no space between `\n` and `How`. If you
+add a space there, there will be a space at the beginning of the second line.
 
-Creating a method with no parameters or return:
+| Symbol | Escape Sequence |
+| - | - |
+| `\n` | newline |
+| `\t` | tab |
+| `\"` | double quote |
+| `\\` | backslash |
+
+Java has a total of eight escape sequences, and the four most commonly used ones are listed in the table above. For example, to write quotation marks inside of
+strings, you need to escape them with a backslash:
 
 ```java
-public static void newMethod() {
-//code goes here;
-}
+System.out.println("She said \"Hello!\" to me.");
 ```
+
+The result is as follows:
+
+```
+She said "Hello!" to me.
+```
+
+## Debugging
+
+Whenever you are experimenting with a new feature, you should also try to
+make mistakes. For example, in the Hello World program, what happens if
+you leave out one of the quotation marks? What if you leave out both? What
+if you spell `println` wrong? These kinds of experiments help you remember
+what you read. They also help with debugging, because you learn what the
+error messages mean. It is better to make mistakes now and on purpose than
+later on and accidentally.
+
+Debugging is like an experimental science: once you have an idea about what
+is going wrong, you modify your program and try again. If your hypothesis
+was correct, then you can predict the result of the modification, and you take
+a step closer to a working program. If your hypothesis was wrong, you have
+to come up with a new one.
+
+Programming and debugging should go hand in hand. Don’t just write a bunch
+of code and then perform trial-and-error debugging until it all works. Instead,
+start with a program that does *something* and make small modifications, de-
+bugging them as you go, until the program does what you want. That way,
+you will always have a working program, and isolating errors will be easier.
+
+Finally, programming sometimes brings out strong emotions. If you are strug-
+gling with a difficult bug, you might feel angry, despondent, or embarrassed.
+Remember that you are not alone, and virtually every programmer has had
+similar experiences. Don’t hesitate to reach out to a friend and ask questions!
+
+
+## Glossary
+
+**problem solving:** The process of formulating a problem, finding a solution,
+and expressing the solution.
+
+**program:** A sequence of instructions that specifies how to perform tasks on
+a computer. Also known as “software”.
+
+**programming:** The application of problem solving to creating executable
+computer programs.
+
+**statement:** Part of a program that specifies one step of an algorithm.
+
+**print statement:** A statement that causes output to be displayed on the
+screen.
+
+**method:** A named sequence of statements.
+
+**class:** For now, a collection of related methods. (You will see later that there
+is a lot more to it.)
+
+**comment:** A part of a program that contains information about the program
+but has no effect when the program runs.
+
+**string:** A sequence of characters; the primary data type for text.
+
+**newline:** A special character signifying the end of a line of text. Also known
+as “line ending”, “end of line” (EOL), or “line break”.
+
+**escape sequence:** A sequence of code that represents a special character
+when used inside a string.
+
+**algorithm:** A procedure or formula for solving a problem, with or without a
+computer.
+
+**computer science:** The scientific and practical approach to computation
+and its applications.
+
+**bug:** An error in a program.
+
+**debugging:** The process of finding and removing errors.
+
+
+### Credits
+
+Full credit goes to the book [Think Java: How to Think Like a Computer Scientist 2nd Edition](https://greenteapress.com/thinkjava7/thinkjava2.pdf), Version 7.1.0 by Allen B. Downey and Chris Mayfield. Most of the lessons content are excerpts from this book.
